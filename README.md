@@ -1,4 +1,4 @@
-# TableDreamer Synthetic Data
+# TableDreamer: A Data Synthesis Pipeline for Table Instruction Tuning
 [![paper](https://img.shields.io/badge/Paper-ACL_2025_Finding-red)](https://arxiv.org/abs/2506.08646) [![synthetic_dataset](https://img.shields.io/badge/🤗_HuggingFace-Dataset-yellow)](https://huggingface.co/datasets/SpursgoZmy/TableDreamer-27K) [![model](https://img.shields.io/badge/🤗_HuggingFace-Model-yellow)](https://huggingface.co/SpursgoZmy/TableDreamer-Llama3.1-8B-Instruct) [![Llama_factory](https://img.shields.io/badge/Code_Base-Llama_Factory-yellow)](https://github.com/hiyouga/LLaMA-Factory)
 
 ## 1. Introduction
