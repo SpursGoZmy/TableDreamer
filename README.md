@@ -56,7 +56,9 @@ FORCE_TORCHRUN=1 nohup llamafactory-cli train examples/train_full/llama3.1-8b-fu
 ```
 
 ## 4. Evaluation Data and Scripts
-Our evaluation includes 9 benchmarks where we randomly select one table format from four candidates (TSV, CSV, HTML, Markdown-style) to build the final input prompt of test data, and we also use the original TableGPT benchmark for evaluation. The processed test data for inference can be downloaded from the [HuggingFace](https://huggingface.co/datasets/SpursgoZmy/TableDreamer-27K/tree/main/Evaluation). Use the [TableDreamer_evaluation.ipynb](https://github.com/SpursGoZmy/TableDreamer/blob/main/TableDreamer_evaluation.ipynb) notebook for automatic evaluation on 9 benchmark of TQA, TFV and T2T tasks. For the TableGPT evaluation, we use the official test data and evaluation scripts from the original [TableGPT github](https://github.com/microsoft/Table-GPT).
+Our evaluation includes 9 benchmarks where we randomly select one table format from four candidates (TSV, CSV, HTML, Markdown-style) to build the final input prompt of test data, and we also use the original TableGPT benchmark for evaluation. The processed test data for inference can be downloaded from the [HuggingFace](https://huggingface.co/datasets/SpursgoZmy/TableDreamer-27K/tree/main/Evaluation). Use the [TableDreamer_evaluation.ipynb](https://github.com/SpursGoZmy/TableDreamer/blob/main/TableDreamer_evaluation.ipynb) notebook for automatic evaluation on 9 benchmark of TQA, TFV and T2T tasks.
+
+For the TableGPT evaluation, please refer to the official [TableGPT github](https://github.com/microsoft/Table-GPT) for the test data and evaluation scripts.
 
 
  
