@@ -21,10 +21,37 @@ Data schema:
 
 We use 27K GPT-4o synthetic data to fine-tune Llama3.1-8B-Instruct and the saved model checkpoint by LLaMA-Factory is available at [huggingface model](https://huggingface.co/SpursgoZmy/TableDreamer-Llama3.1-8B-Instruct/tree/main), which can be directly used with transformers and vllm inference. We use the recommended hyperparameters from this paper [Rethinking Table Instruction Tuning](https://arxiv.org/abs/2501.14693) during fine-tuning.
 
+## 3. Fine-tuning with LLaMA-Factory
+We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) codebase to perform fine-tuning with synthetic data. Download and install Llama-Factory codebase:
+
+```shell
+git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+pip install -e ".[torch,metrics]" --no-build-isolation
+```
+
+Download the synthetic TableDreamer data in the alpaca format (e.g., `TableDreamer_synthetic_data_27K_alpaca_format_by_GPT-4o.json`) from the [Huggingface](https://huggingface.co/datasets/SpursgoZmy/TableDreamer-27K/tree/main) and put it under the `data` dir in the Llama-Factory codebase. The [dataset_info.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/dataset_info.json) contains all available datasets for the Llama-Factory. As we are using a custom dataset, we need to add a dataset description in `dataset_info.json` as following, and specify the `dataset: dataset_name` in the training config file to use it.
+
+```json
+{
+  "TableDreamer_27K": {
+    "file_name": "TableDreamer_synthetic_data_27K_alpaca_format_by_GPT-4o.json"
+  },
+}
+```
+
+The [llama3.1-8b-full_sft_TableDreamer.yaml](https://github.com/SpursGoZmy/TableDreamer/tree/main/training_configs/train_full) contains training hyper-parameters and please make sure specify the dataset_name that is added in the `dataset_info.json` such as 'TableDreamer_27K'. Put the yaml file in the `examples/train_full/' dir. The official script for fine-tuning:
+
+```shell
+FORCE_TORCHRUN=1 nohup llamafactory-cli train examples/train_full/llama3.1-8b-full_sft_TableDreamer.yaml \
+> ./train_logs/sft_llama3.1_8b_with_TableDreamer.log &
+```
+ 
 ## TODOs
 - [x] Synthetic data and fine-tuned models
-- [ ] Scripts of data synthesis pipeline.
-- [ ] The code for model inference.
+- [x] Scripts for model fine-tuning.
 - [ ] Evaluation data and scripts.
+- [ ] Scripts of data synthesis pipeline.
+
 
 
