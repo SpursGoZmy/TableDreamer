@@ -65,7 +65,7 @@ For the TableGPT evaluation, please refer to the official [TableGPT github](http
 ## TODOs
 - [x] Synthetic data and fine-tuned models
 - [x] Scripts for model fine-tuning.
-- [ ] Evaluation data and scripts.
+- [x] Evaluation data and scripts.
 - [ ] Scripts of data synthesis pipeline.
 
 
