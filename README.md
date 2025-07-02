@@ -1,6 +1,14 @@
 # TableDreamer: A Data Synthesis Pipeline for Table Instruction Tuning
 [![paper](https://img.shields.io/badge/Paper-ACL_2025_Finding-red)](https://arxiv.org/abs/2506.08646) [![synthetic_dataset](https://img.shields.io/badge/🤗_HuggingFace-Dataset-yellow)](https://huggingface.co/datasets/SpursgoZmy/TableDreamer-27K) [![model](https://img.shields.io/badge/🤗_HuggingFace-Model-yellow)](https://huggingface.co/SpursgoZmy/TableDreamer-Llama3.1-8B-Instruct) [![Llama_factory](https://img.shields.io/badge/Code_Base-Llama_Factory-yellow)](https://github.com/hiyouga/LLaMA-Factory)
 
+
+<font size=8><center><b> Table of Contents: </b> </center></font>
+1. [**Introduction**](#1-introduction)
+2. [**Synthetic Data and Fine-tuned Model**](#2-synthetic-data-and-fine-tuned-model)
+3. [**Fine-tuning with LLaMA-Factory**](#3-fine-tuning-with-llama-factory)
+4. [**Evaluation Data and Scripts**](#4-evaluation-data-and-scripts)
+
+
 ## 1. Introduction
 
 <img src="./Visualization/data_volume_and_performance.png" width = "350" height = "270" align=right />
@@ -46,6 +54,11 @@ The [llama3.1-8b-full_sft_TableDreamer.yaml](https://github.com/SpursGoZmy/Table
 FORCE_TORCHRUN=1 nohup llamafactory-cli train examples/train_full/llama3.1-8b-full_sft_TableDreamer.yaml \
 > ./train_logs/sft_llama3.1_8b_with_TableDreamer.log &
 ```
+
+## 4. Evaluation Data and Scripts
+Our evaluation includes 9 benchmarks where we randomly select one table format from four candidates (TSV, CSV, HTML, Markdown-style) to build the final input prompt of test data, and we also use the original TableGPT benchmark for evaluation. The processed test data for inference can be downloaded from the [HuggingFace](https://huggingface.co/datasets/SpursgoZmy/TableDreamer-27K/tree/main/Evaluation). Use the [TableDreamer_evaluation.ipynb](https://github.com/SpursGoZmy/TableDreamer/blob/main/TableDreamer_evaluation.ipynb) notebook for automatic evaluation on 9 benchmark of TQA, TFV and T2T tasks. For the TableGPT evaluation, we use the official test data and evaluation scripts from the original [TableGPT github](https://github.com/microsoft/Table-GPT).
+
+
  
 ## TODOs
 - [x] Synthetic data and fine-tuned models
